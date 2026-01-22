@@ -41,6 +41,8 @@
   color: #888;
 }
 
-.creator-card {
+.cards-container{
   display: flex;
+  justify-content: center;
+  gap: 20px;
 }
