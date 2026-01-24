@@ -1,5 +1,4 @@
 import { useRoutes, Link } from "react-router-dom"
-import { supabase } from "./client.js"
 import ViewCreator from './pages/ViewCreator/ViewCreator.jsx'
 import ShowCreators from './pages/ShowCreators/ShowCreators.jsx'
 import EditCreator from './pages/EditCreator/EditCreator.jsx'

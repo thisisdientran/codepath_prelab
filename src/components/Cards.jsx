@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../client.js";
+import { useRoutes, Link } from "react-router-dom"
 
 export default function Cards() {
     const [creators, setCreators] = useState([]);
@@ -19,11 +20,14 @@ export default function Cards() {
     return (
         <div className="cards-container">
             {creators.map(c => (
-                <div key={c.id} className="creator-card">
-                    <img src={c.imageURL} alt={c.name} className="creator-image" width="200px"/>
-                    <h2>{c.name}</h2>
+                <div key={c.id} className="creator-card" style={{backgroundImage: `url(${c.imageURL})`}}>
+                    <div className="creator-card-overlay">
+                    <Link to={`/creator/${(c.id)}`}>
+                        <h2>{c.name}</h2>
+                    </Link>
                     <p>{c.description}</p>
                     <a href={c.url} target="_blank" rel="noopener noreferrer">Visit Website</a>
+                    </div>
                 </div>
             ))}
         </div>

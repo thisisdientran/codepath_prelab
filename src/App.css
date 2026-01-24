@@ -43,6 +43,27 @@
 
 .cards-container{
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: left;
+}
+
+.creator-card{
+  width: 400px;
+  margin: 1rem;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  text-shadow: 1px 1px 2px #000;
+  min-height: 300px;
+}
+
+.creator-card-overlay{
+  position: absolute;
+  inset: 0; 
+  background: rgba(0,0,0,0.6);
+  padding: 1rem;
+}
+
+.creator-card-overlay > *{
+  position: relative;
 }
