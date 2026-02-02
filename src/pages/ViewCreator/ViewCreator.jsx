@@ -30,6 +30,8 @@ export default function ViewCreator() {
         <p>{creator.description}</p>
         <a href={creator.url} target="_blank" rel="noopener noreferrer">Visit Website</a>
         <br></br>
+        <Link to={`/creator/${id}/edit`}>Edit Creator</Link>
+        <br></br>
         <Link to="/">Back to Home</Link>
     </div>
         
