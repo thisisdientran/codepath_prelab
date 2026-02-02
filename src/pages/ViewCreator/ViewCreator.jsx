@@ -23,7 +23,15 @@ export default function ViewCreator() {
     if (!creator) return <p>Loading...</p>;
 
     return (
-    <h1>ViewCreator Page</h1>
-    
+    <div>
+        <h1>ViewCreator Page</h1>
+        <img src={creator.imageURL} alt={creator.name} style={{maxWidth: '300px'}} />
+        <p>Name: {creator.name}</p>
+        <p>{creator.description}</p>
+        <a href={creator.url} target="_blank" rel="noopener noreferrer">Visit Website</a>
+        <br></br>
+        <Link to="/">Back to Home</Link>
+    </div>
+        
     );
 }
