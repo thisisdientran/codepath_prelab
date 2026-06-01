@@ -15,10 +15,13 @@ export default function Root() {
     
   return (
     <>
-      <nav>
-        <Link to="/">Home</Link> | <Link to="/new">Add</Link> | <Link to="/vite">Vite</Link>
-      </nav>
-
+      <div className="banner">
+        <h1 className="title">CREATORVERSE</h1>
+        <div className="nav-home">
+            <button className="primary"><Link className="link-button" to="/">VIEW ALL CREATORS</Link></button>
+            <button className="primary"><Link className="link-button" to="/new">ADD A CREATOR</Link></button>
+        </div>
+      </div>
       {routes}
     </>
   );

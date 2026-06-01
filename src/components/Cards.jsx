@@ -26,18 +26,18 @@ export default function Cards() {
     }, []);
     
     return (
-        <div className="cards-container">
+        <article className="cards-container">
             {creators.map(c => (
                 <div key={c.id} className="creator-card" style={{backgroundImage: `url(${c.imageURL})`}}>
                     <div className="creator-card-overlay">
                     <Link to={`/creator/${(c.id)}`}>
-                        <h2>{c.name}</h2>
+                        <h1>{c.name}</h1>
                     </Link>
-                    <p>{c.description}</p>
+                    <p className="card-description">{c.description}</p>
                     <a href={c.url} target="_blank" rel="noopener noreferrer">Visit Website</a>
                     </div>
                 </div>
             ))}
-        </div>
+        </article>
     );
 }

@@ -5,7 +5,7 @@ import Root from "./routes/root";
 function App() {
   return (
     <>
-      <Root />
+        <Root />
     </>
   )
 }

@@ -1,7 +1,7 @@
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem; */
   text-align: center;
 }
 
@@ -45,16 +45,17 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
+  justify-content: space-between;
 }
 
 .creator-card{
-  width: 400px;
+  flex: 0 0 46%; 
   margin: 1rem;
   background-size: cover;
   background-position: center;
   position: relative;
   text-shadow: 1px 1px 2px #000;
-  min-height: 300px;
+  min-height: 24rem;
 }
 
 .creator-card-overlay{
@@ -66,4 +67,51 @@
 
 .creator-card-overlay > *{
   position: relative;
+}
+
+.nav-home{
+  display: flex;
+  justify-content: center; 
+  column-gap: 2em;
+}
+
+button {
+  border-radius: 3px;
+  padding: 0.5em 2.6em;
+  font-size: 1.2em;
+  --pico-font-weight: 700;
+}
+
+.title{
+  font-size: 6em;
+  --pico-font-family-sans-serif: Ubuntu;
+}
+
+button:hover{
+    border: 1px solid white;
+}
+
+.link-button{
+  color: white;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.banner{
+  height: 100dvh;
+  padding-top: 30dvh;
+  display: flex;
+  row-gap: 4em;
+  flex-direction: column;
+  background-image: url('https://assets.superhivemarket.com/store/productimage/972607/image/xlarge_og-5714b58375f8a7730b54ab4597818d2a.jpg');
+  background-size: cover; 
+}
+
+.card-description{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* Change this number to your desired line limit */
+  overflow: hidden;
 }
