@@ -1,26 +1,49 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../client.js";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate,} from "react-router-dom";
+import ReactDOM from 'react-dom';
 
 export default function ViewCreator() {
-    const [creator, setCreator] = useState(null);
+    const [creator, setCreator] = useState();
     const { id } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchCreator() {
-        const { data, error } = await supabase
-            .from("creators")
-            .select("*")
-            .eq("id", id)
-            .single();
+            const { data, error } = await supabase
+                .from("creators")
+                .select()
+                .eq("id", id)
+                .single();
 
-        if (!error) setCreator(data);
+            console.log("Fetch single creators", data);
+            
+            setCreator(data);
+
+            if(error){
+                console.log("Failed fetch single creator")
+                return;
+            }
         }
 
         fetchCreator(); // IMPORTANT: call it
     }, [id]);
 
     if (!creator) return <p>Loading...</p>;
+
+
+    async function handleSubmit(e) {
+    e.preventDefault();
+
+    await supabase
+      .from("creators")
+      .delete()
+      .eq("id", id);
+
+    alert("Creator deleted!");
+    return navigate("/");
+    // navigate(`/creator/${id}`);
+  }
 
     return (
     <div>
@@ -33,6 +56,7 @@ export default function ViewCreator() {
         <Link to={`/creator/${id}/edit`}>Edit Creator</Link>
         <br></br>
         <Link to="/">Back to Home</Link>
+        <button onClick = {handleSubmit}>Delete creator</button>
     </div>
         
     );

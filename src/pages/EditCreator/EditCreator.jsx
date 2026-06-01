@@ -1,10 +1,10 @@
-import { useEffect, useState, useNavigate } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "../../client.js";
 import { useParams, Link } from "react-router-dom";
 
 export default function EditCreator() {
   const { id } = useParams();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [form, setForm] = useState({
     name: "",
@@ -15,13 +15,19 @@ export default function EditCreator() {
 
   useEffect(() => {
     async function fetchCreator() {
-      const { data } = await supabase
+      const { data, error } = await supabase
         .from("creators")
-        .select("*")
+        .select()
         .eq("id", id)
         .single();
 
+      console.log("Fetched edit date", data)
       if (data) setForm(data);
+
+      if(error){
+        console.log("Failed fetch edit date")
+        return;
+      }
     }
     fetchCreator();
   }, [id]);
@@ -42,7 +48,9 @@ export default function EditCreator() {
       })
       .eq("id", id);
 
-    navigate(`/creator/${id}`);
+    alert("Creator edited!");
+
+    // navigate(`/creator/${id}`);
   }
 
   return (

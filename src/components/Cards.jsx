@@ -6,15 +6,23 @@ export default function Cards() {
     const [creators, setCreators] = useState([]);
 
     useEffect(() => {
-        async function fetchCreators() {
-        const { data, error } = await supabase
-            .from("creators")
-            .select("*");
 
-        if (!error) setCreators(data);
+        async function fetchCreators() {
+            const { data, error } = await supabase
+                .from("creators")
+                .select();
+
+            if (error){
+                console.log("Can't fetch the data")
+                return ;
+            }
+            
+            console.log("Fetched the data", data)
+            setCreators(data)
         }
 
         fetchCreators(); // IMPORTANT: call it
+    
     }, []);
     
     return (

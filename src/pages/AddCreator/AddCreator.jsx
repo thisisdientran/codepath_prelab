@@ -3,7 +3,9 @@ import { supabase } from "../../client.js";
 import { Link } from "react-router-dom";
 
 async function addCreator(newCreator) {
-  const { error } = await supabase.from("creators").insert([newCreator]);
+  const { error } = await supabase
+    .from("creators")
+    .insert([newCreator]);
   if (error) throw error;
 }
 
