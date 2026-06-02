@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../client.js";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 export default function EditCreator() {
   const { id } = useParams();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
 
   const [form, setForm] = useState({
     name: "",
@@ -50,11 +51,24 @@ export default function EditCreator() {
 
     alert("Creator edited!");
 
-    // navigate(`/creator/${id}`);
+    navigate(`/creator/${id}`);
+  }
+
+  async function handleDelete(e) {
+    e.preventDefault();
+
+    await supabase
+      .from("creators")
+      .delete()
+      .eq("id", id);
+
+      alert("Creator deleted!");
+      setShowModal(false);
+    return navigate("/");
   }
 
   return (
-    <>
+    <div className="form-page">
       <h1>EditCreator Page</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name:</label>
@@ -69,8 +83,32 @@ export default function EditCreator() {
         <label htmlFor="imageURL">Image URL:</label>
         <input name="imageURL" value={form.imageURL} onChange={handleChange} required />
         <br />
-        <button type="submit">Update Creator</button>
+        <button className="secondary" type="submit">Update Creator</button>
+        <button className="secondary-delete" onClick={() => setShowModal(true)}>
+                Delete Creator
+        </button>
+
+        {showModal && (
+          <dialog open>
+            <article className="dialog-creator">
+                <h2>WAIT!!!</h2>
+                <p>Are you sure you want to delete this creator?</p>
+
+                <footer className="view-creator-buttons">
+                <button
+                    onClick={() => setShowModal(false)}
+                >
+                    Cancel
+                </button>
+
+                <button className="secondary-delete" onClick={handleDelete}>
+                    Delete
+                </button>
+                </footer>
+            </article>
+          </dialog>
+        )}            
       </form>
-    </>
+    </div>
   );
 }

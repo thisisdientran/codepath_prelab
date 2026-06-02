@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+h2{
+  color: #51B4FF;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -52,6 +56,7 @@
   flex: 0 0 46%; 
   margin: 1rem;
   background-size: cover;
+  border: 1px solid white;
   background-position: center;
   position: relative;
   text-shadow: 1px 1px 2px #000;
@@ -61,8 +66,13 @@
 .creator-card-overlay{
   position: absolute;
   inset: 0; 
-  background: rgba(0,0,0,0.6);
-  padding: 1rem;
+  background: rgba(0,0,0,0.7);
+  padding: 2rem;
+  padding-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  text-align: left;
 }
 
 .creator-card-overlay > *{
@@ -114,4 +124,81 @@ html, body {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3; /* Change this number to your desired line limit */
   overflow: hidden;
+}
+
+.creator-nav ul h2{
+  margin: 0px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.creator-nav-2{
+  margin-top: -1rem;
+}
+
+.make-white {
+    filter: invert(1);
+}
+
+/* View Creator */
+.card-view-creator{
+  display: flex;
+  padding: 4rem 6rem;
+  gap: 3rem;
+}
+
+.creator-img{
+  flex: 0 0 33%; 
+  background-size: cover;
+  border: 0.2em solid #51B4FF;
+  background-position: center;
+  position: relative;
+  text-shadow: 1px 1px 2px #000;
+  min-height: 30rem;
+}
+
+.view-creator-description{
+  text-align: left;
+}
+
+.view-creator-description h2{
+  font-size: 3.6rem;
+  text-transform: uppercase;
+}
+
+.view-creator-description p{
+  font-size: 1.2rem;
+}
+
+.view-creator-description .social-icon{
+  margin: 0;
+}
+
+.view-creator-buttons{
+  display: flex;
+  gap: 6rem;
+  justify-content: center;
+  padding-top: 4rem;
+  padding-bottom: 10rem;
+}
+
+.secondary-delete{
+  background-color: rgb(184, 88, 88);
+}
+
+.dialog-creator{
+  padding: 6rem;
+}
+
+.dialog-creator .view-creator-buttons{
+  flex-direction: column;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  padding-top: 4rem;
+  padding-bottom: 10rem;
+}
+
+.form-page{
+  padding: 6rem 18rem;
 }

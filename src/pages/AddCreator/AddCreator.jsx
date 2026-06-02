@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { supabase } from "../../client.js";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 
 async function addCreator(newCreator) {
   const { error } = await supabase
@@ -10,6 +10,7 @@ async function addCreator(newCreator) {
 }
 
 export default function AddCreator() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     name: "",
     description: "",
@@ -25,10 +26,11 @@ export default function AddCreator() {
     e.preventDefault();
     await addCreator(form);
     alert("Creator added!");
+    return navigate("/");
   }
 
   return (
-    <>
+    <div className="form-page">
       <h1>AddCreator Page</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name:</label>
@@ -45,6 +47,6 @@ export default function AddCreator() {
         <br />
         <button type="submit">Add Creator</button>
       </form>
-    </>
+    </div>
   );
 }
