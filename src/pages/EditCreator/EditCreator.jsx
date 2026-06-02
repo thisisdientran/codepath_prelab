@@ -83,7 +83,7 @@ export default function EditCreator() {
         <label htmlFor="imageURL">Image URL:</label>
         <input name="imageURL" value={form.imageURL} onChange={handleChange} required />
         <br />
-        <button className="secondary" type="submit">Update Creator</button>
+        <button className="secondary" onClick={handleSubmit}>Update Creator</button>
         <button className="secondary-delete" onClick={() => setShowModal(true)}>
                 Delete Creator
         </button>
